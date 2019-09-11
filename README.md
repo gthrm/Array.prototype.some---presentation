@@ -1,1 +1,0 @@
-presentation https://gthrm.github.io/some_find
