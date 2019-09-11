@@ -1,1 +1,1 @@
-presentation https://gthrm.github.io/some_find
+presentation https://gthrm.github.io/Array.prototype.some---presentation/
