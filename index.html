@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <title>Shower Presentation Engine</title>
     <meta charset="utf-8">
@@ -11,17 +12,17 @@
         }
     </style>
 </head>
+
 <body class="shower list">
 
     <header class="caption">
-        <h1>Array.prototype.some() и Array.prototype.find()</h1>
-        <p>Удобные методы для поиска объекта в массиве.</p>
+        <h1>Array.prototype.some()</h1>
+        <p>Метод массива</p>
     </header>
 
     <section class="slide" id="cover">
         <h2>Array.prototype.some()</h2>
-        <h2>Array.prototype.find()</h2>
-        <p>Удобные методы для поиска объекта в массиве</p>
+        <p>Метод массива</p>
         <figure>
             <img class="cover" src="pictures/cover.png" alt="Hands on the orange typewriter in a park">
             <figcaption class="copyright right white">
@@ -32,6 +33,7 @@
             #cover {
                 background-color: #FFE000
             }
+
             #cover h2 {
                 margin: 30px 0 0;
                 color: white;
@@ -53,156 +55,100 @@
         </style>
     </section>
 
+    <!-- <section class="slide ">
+        <h2 class="shout grow">.some()</h2>
+    </section> -->
+
     <section class="slide">
-        <h2>Shower key features</h2>
-        <ol>
-            <li>Built on HTML, CSS and JavaScript</li>
-            <li>Works in all modern browsers</li>
-            <li>Themes are separated from engine</li>
-            <li>Fully keyboard accessible</li>
-            <li>Printable to PDF</li>
-        </ol>
-        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+        <h2>Цель</h2>
+        <p>Этот метод массива помогает вам определить, соответствует ли <b><em>одно</em></b> или
+            <b><em>несколько</em></b> его значений вашему условию</p>
+        <p class="next">Если вам это кажется не очень понятным, позвольте мне проиллюстрировать это на примере...</p>
     </section>
 
     <section class="slide">
-        <h2>Plain text on your slides</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-    </section>
-
-    <section class="slide">
-        <h2>Two columns if you like</h2>
-        <div class="columns two">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>All kind of lists</h2>
-        <ol>
-            <li>Simple lists are marked with bullets</li>
-            <li>Ordered lists begin with a number</li>
-            <li>You can even nest lists one inside another
-                <ul>
-                    <li>Or mix their types</li>
-                    <li>But do not go too far</li>
-                    <li>Otherwise audience will be bored</li>
-                </ul>
-            </li>
-            <li>Look, seven rows exactly!</li>
-        </ol>
-    </section>
-
-    <section class="slide">
-        <h2>Serious citations</h2>
-        <figure>
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-            </blockquote>
-            <figcaption>Marcus Tullius Cicero</figcaption>
-        </figure>
-    </section>
-
-    <section class="slide">
-        <h2>Code samples</h2>
+        <h2>Вот список рандомных сотрудников:</h2>
         <pre>
-            <code>&lt;!DOCTYPE html&gt;</code>
-            <code class="mark">&lt;html lang="en"&gt;</code>
-            <code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-            <code><mark>&lt;/head&gt;</mark></code>
+            <code><b>const</b> <mark>operatives</mark> = [</code>
+            <code >    { id: 12, name: 'Baze Malbus', guy: false },</code>
+            <code >    { id: 44, name: 'Bodhi Rook', guy: true },</code>
+            <code >    { id: 59, name: 'Chirrut Îmwe', guy: false },</code>
+            <code >    { id: 122, name: 'Jyn Erso', guy: false }</code>
+            <code >];</code>
+        </pre>
+        <p class="note">Вы хотите знать, есть ли среди ваших сотрудников хотябы один 'пилот'</p>
+    </section>
+
+    <section class="slide">
+        <p>Есть много способов достичь этой цели. Большинство людей, вероятно, будут использовать
+            <mark><b>.forEach()</b></mark> и делать
+            что-то вроде этого:</p>
+        <pre>
+            <code><b>let</b> <mark>listHasPilots</mark> = <b>false</b></code>
+            <code >operatives.forEach(function (operative) {</code>
+            <code >    if (operative.guy) {</code>
+            <code >         <mark>listHasPilots</mark> = <mark class="important"><b>true</b></mark></code>
+            <code >    }</code>
+            <code >});</code>
+        </pre>
+        <p class="note">Это много строк, чтобы увидеть, содержит ли список 'пилотов', и <b>guy</b> !== <b>gay</b></p>
+    </section>
+
+    <section class="slide">
+        <h2>Давайте попробуем использовать .some()</h2>
+        <pre>
+            <code><b>const</b> <mark>listHasPilots</mark> = operatives.<mark>some</mark>(function (operative) {</code>
+            <code >     return <mark class="important"><b>operative.pilot</b></mark></code>
+            <code >});</code>
+        </pre>
+        <p>А еще короче?</p>
+        <pre>
+            <code><b>const</b> <mark>listHasPilots</mark> = operatives.<mark>some</mark>(</code>
+            <code >     operative => <mark class="important"><b>operative.pilot</b></mark> )</code>
         </pre>
     </section>
 
     <section class="slide">
-        <h2>Even tables</h2>
-        <table>
-        <tr>
-            <th scope="col">Locavore</th>
-            <th>Umami</th>
-            <th>Helvetica</th>
-            <th>Vegan</th>
-        </tr>
-        <tr>
-            <th scope="row">Fingerstache</th>
-            <td>Kale</td>
-            <td>Chips</td>
-            <td>Keytar</td>
-        </tr>
-        <tr>
-            <th scope="row">Sriracha</th>
-            <td>Gluten-free</td>
-            <td>Ennui</td>
-            <td>Keffiyeh</td>
-        </tr>
-        <tr>
-            <th scope="row">Thundercats</th>
-            <td>Jean</td>
-            <td>Shorts</td>
-            <td>Biodiesel</td>
-        </tr>
-        <tr>
-            <th scope="row">Terry</th>
-            <td>Richardson</td>
-            <td>Swag</td>
-            <td>Blog</td>
-        </tr>
-        </table>
-        <p>It’s good to have information organized.</p>
-    </section>
-
-    <section class="slide" id="picture">
-        <h2>Pictures</h2>
-        <figure>
-            <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #picture h2 {
-                color: white;
-            }
-        </style>
+        <h2 class="shout shrink">Как это работает?</h2>
     </section>
 
     <section class="slide">
-        <h2 class="shout shrink">You can even shout this way</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Inner navigation</h2>
         <ol>
-            <li>Lets you reveal list items one by one</li>
-            <li class="next">To keep some key points</li>
-            <li class="next">In secret from audience</li>
-            <li class="next">But it will work only once</li>
-            <li class="next">Nobody wants to see the same joke twice</li>
+
+            <li>Вы передаете в <code>.some()</code> <b>функцию</b> в качестве аргумента.</li>
+            <li class="next">Эта функция выполняется для каждого значения в массиве.</li>
+            <li class="next">Затем вы можете увидеть, соответствует ли значение написанному вами условию
+                (<code>true</code> или <code>false</code>).</li>
+            <li class="next">Как только функция вернет первый <code>true</code>, <code>.some()</code> сама вернет
+                <code>true</code></li>
+            <li class="next">Если ни одно из значений при обработке в ваших условиях <b>не возвращает</b>
+                <code>true</code>, то <code>.some()</code> возвращает <code>false</code>.</li>
         </ol>
+        <p class="note next">Обратите внимание, что как только возвращается первое значение <code>true</code>,
+            <code>.some()</code> прекращает проверку других значений массива.</p>
     </section>
 
-    <section class="slide" id="see-more">
-        <h2 class="shout">
-            <img src="pictures/logo.svg" alt="Shower logo">
-            <a href="https://github.com/shower/shower">See more on GitHub</a>
-        </h2>
-        <style>
-            #see-more h2 {
-                font-size: 100px
-            }
+    <section class="slide">
+        <p>В нашем примере выше, функция запускается только <mark>дважды</mark>, поскольку второй сотрудник, Бодхи Рук,
+            является пилотом. Не нужно проверять других пилотов.</p>
+        <pre>
+            <code><b>const</b> operatives = [</code>
+            <code >    { id: 12, name: 'Baze Malbus', guy: false },</code>
+            <code >    { id: 44, name: <mark>'Bodhi Rook'</mark>, guy: <mark class="important">true</mark> },</code>
+            <code >    { id: 59, name: 'Chirrut Îmwe', guy: false },</code>
+            <code >    { id: 122, name: 'Jyn Erso', guy: false }</code>
+            <code >];</code>
+        </pre>
+    </section>
 
-            #see-more img {
-                width: 0.72em;
-                height: 0.72em;
-            }
-        </style>
+    <section class="slide">
+        <h2>И так</h2>
+        <p>Если некоторые из ваших значений массива соответствуют тому, что вы ищете, <code>.some()</code> вернет
+            <code>true</code>. Если нет, он вернет <code>false</code>.</p>
     </section>
 
     <footer class="badge">
-        <a href="https://github.com/shower/shower">Fork me on GitHub</a>
+        <a href="https://github.com/gthrm/">GitHub</a>
     </footer>
 
     <div class="progress"></div>
@@ -211,4 +157,5 @@
     <!-- Copyright © 3000 Yours Truly, Famous Inc. -->
 
 </body>
+
 </html>
